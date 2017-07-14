@@ -162,13 +162,8 @@
     var drawer = document.getElementById('drawer');
     document.getElementById('toggle-drawer').addEventListener('click', toggleDrawer);
     document.getElementById('drawer-background').addEventListener('click', toggleDrawer);
-
     function toggleDrawer() {
-      if (isDrawerOpen) {
-        drawer.classList.remove('active');
-      } else {
-        drawer.className += 'active';
-      }
+      isDrawerOpen ? drawer.classList.remove('active') : drawer.className += 'active';
       isDrawerOpen = !isDrawerOpen;
     }
   </script>
