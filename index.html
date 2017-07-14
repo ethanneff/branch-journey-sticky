@@ -10,6 +10,7 @@
       padding: 0;
       margin: 0;
       border: none;
+      line-height: 0;
     }
   </style>
   <style>
@@ -17,11 +18,10 @@
     header {
       position: fixed;
       width: 100%;
-      left: 0;
-      height: 3.6em;
+      height: 3em;
     }
     #content {
-      padding-top: 3.6em;
+      padding-top: 3em;
     }
   </style>
 
@@ -35,6 +35,10 @@
       background-color: rgba(0,0,0,0);
       transition: background 0.5s ease-in-out;
     }
+    #drawer.active #drawer-background {
+      transform: translate(100%, 0px);
+      background-color: rgba(0,0,0,0.2);
+    }
     #drawer-content {
       position: fixed;
       width: 200px;
@@ -46,10 +50,6 @@
     #drawer.active #drawer-content {
       transform: translate(300px, 0px);
     }
-    #drawer.active #drawer-background {
-      transform: translate(100%, 0px);
-      background-color: rgba(0,0,0,0.2);
-    }
   </style>
   <style>
     /* other styling */
@@ -59,55 +59,51 @@
     header, #drawer-content {
       box-shadow: 0.05em 0.05em 0.5em #888888;
     }
-    button {
-      font-size: 1.5em;
-      padding: 0.5em;
+    header *, #drawer-content h2 {
+      padding: 1em 0.5em 0;
+      display: inline-block;
     }
     #content {
       margin: 0 auto;
       max-width: 42em;
     }
-    header * {
-      display: inline-block;
-    }
-    header:after {
-      content: "";
-      display: table;
-      clear: both;
-    }
     .right {
       float: right;
+    }
+    .icon {
+      font-size: 1.5em;
     }
     a {
       text-decoration: none;
       color: deepskyblue;
     }
     ul {
+      padding: 1.5em 0;
       list-style-type: none;
     }
     p, li {
-      padding: 1em 1em 0;
+      padding: 1.5em 1em 0;
       line-height: 1.5em;
     }
     footer {
       text-align: center;
-      padding: 0 0 1em;
+      padding: 0 0 1.5em;
     }
   </style>
 </head>
 <body>
   <div id="container">
-    <header>
-      <button id="toggle-drawer">&#x2630;</button>
+  <header>
+      <button id="toggle-drawer" class="icon">&#x2630;</button>
       <h2>Sticky Header</h2>
-      <button id="show-journey" class="right">&#x2714;</button>
-      <button id="hide-journey" class="right">&#x2718;</button>
+      <button id="show-journey" class="icon right">&#x2714;</button>
+      <button id="hide-journey" class="icon right">&#x2718;</button>
     </header>
     <nav id="drawer">
       <div id="drawer-background"></div>
       <div id="drawer-content">
+        <h2>Side Drawer</h2>
         <ul>
-          <li><h2>Side Drawer</h2></li>
           <li><a href="#">Menu Item</a></li>
           <li><a href="#">Menu Item</a></li>
           <li><a href="#">Menu Item</a></li>
