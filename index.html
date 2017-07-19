@@ -4,30 +4,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>branch example</title>
   <style>
-    /* normalize css */
+    /* RESET */
     * {
       box-sizing: border-box;
       padding: 0;
       margin: 0;
       border: none;
       line-height: 0;
-      color: #212121;
     }
-  </style>
-  <style>
-    /* sticky header */
+    /* STICKY HEADER */
     header {
       position: fixed;
       width: 100%;
       height: 3em;
     }
-    #content {
+    .content {
       padding-top: 3em;
     }
-  </style>
-  <style>
-    /* drawer */
-    #drawer-background {
+    /* DRAWER */
+    .drawer-background {
       position: fixed;
       width: 100%;
       height: 100%;
@@ -37,11 +32,11 @@
       background-color: rgba(0,0,0,0);
       transition: background 0.2s ease-in-out;
     }
-    #drawer.active #drawer-background {
+    .drawer.active .drawer-background {
       transform: translate(100%, 0px);
       background-color: rgba(0,0,0,0.2);
     }
-    #drawer-content {
+    .drawer-content {
       position: fixed;
       width: 200px;
       height: 100%;
@@ -51,13 +46,11 @@
       overflow: auto;
       transition: 0.2s ease-in-out;
     }
-    #drawer.active #drawer-content {
+    .drawer.active .drawer-content {
       transform: translate(300px, 0px);
     }
-  </style>
-  <style>
-    /* dialog */
-    #dialog-background {
+    /* DIALOG */
+    .dialog-background {
       position: fixed;
       width: 100%;
       height: 100%;
@@ -67,18 +60,17 @@
       background-color: rgba(0,0,0,0);
       transition: background 0.2s ease-in-out;
     }
-    #dialog.active #dialog-background {
+    .dialog.active .dialog-background {
       transform: translate(100%, 0px);
       background-color: rgba(0,0,0,0.2);
     }
-    #dialog-content {
+    .dialog-content {
       position: fixed;
       top: 0;
       left: -100%;
       width: 80%;
       max-height: 80%;
       max-width: 42em;
-      padding: 1em;
       overflow-y: scroll;
       opacity: 0;
       z-index: 2;
@@ -87,26 +79,24 @@
     body.dialog {
       overflow-y: hidden;
     }
-    #dialog.active #dialog-content {
+    .dialog.active .dialog-content {
       opacity: 1;
       top: 50%;
       left: 50%;
       transform: translate(-50%, -50%);
     }
-  </style>
-  <style>
-    /* other styling */
-    header, button, #drawer-content, #dialog-content {
+    /* STYLING */
+    header, button, .drawer-content, .dialog-content {
       background-color: white;
     }
-    header, #drawer-content, #dialog-content {
+    header, .drawer-content, .dialog-content {
       box-shadow: 0.05em 0.05em 0.5em #888888;
     }
-    header *, #drawer-content h2 {
+    header *, .drawer-content h2 {
       padding: 1em 0.5em;
       display: inline-block;
     }
-    #content {
+    .content {
       margin: 0 auto;
       max-width: 42em;
     }
@@ -117,46 +107,40 @@
       font-size: 1.5em;
       font-weight: bold;
     }
-    .close {
-      font-size: 2.2em;
-    }
     .icon:hover, .icon:focus, a:hover, a:focus {
       color: #bdbdbd;
       text-decoration: none;
       cursor: pointer;
     }
     a {
-      width:100%;
       text-decoration: none;
       color: #4285f4;
     }
-    ul {
-      padding: 0 0 1.5em;
-      list-style-type: none;
-    }
-    p, li {
+    p, li, .dialog-content {
       padding: 1.5em 1.5em 0;
       line-height: 1.5em;
     }
     footer {
       text-align: center;
-      padding: 0 0 1.5em;
+    }
+    ul, footer, .dialog-content {
+      padding-bottom: 1.5em;
     }
   </style>
 </head>
 <body>
-  <div id="container">
-    <header id="header">
-      <button id="toggle-drawer" class="icon">&#x2630;</button>
-      <h2>Sticky Header</h2>
+  <div class="container">
+    <header>
+      <button id="show-drawer" class="icon">&#x2630;</button>
+      <h2>Header</h2>
       <button id="hide-journey" class="icon right">&#x2718;</button>
       <button id="show-journey" class="icon right">&#x2714;</button>
       <button id="show-dialog" class="icon right">&#x2605;</button>
     </header>
-    <nav id="drawer">
-      <div id="drawer-background"></div>
-      <div id="drawer-content">
-        <h2>Side Drawer</h2>
+    <nav class="drawer">
+      <div class="drawer-background"></div>
+      <div class="drawer-content">
+        <h2>Drawer</h2>
         <ul>
           <li><a href="./index.html">Menu Item Home</a></li>
           <li><a href="#1">Menu Item 1</a></li>
@@ -182,7 +166,7 @@
         </ul>
       </div>
     </nav>
-    <div id="content">
+    <div class="content">
       <p>Leverage agile frameworks to provide a robust synopsis for high level overviews. Iterative approaches to corporate strategy foster collaborative thinking to further the overall value proposition. Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
       <p>Bring to the table win-win survival strategies to ensure proactive domination. At the end of the day, going forward, a new normal that has evolved from generation X is on the runway heading towards a streamlined cloud solution. User generated content in real-time will have multiple touchpoints for offshoring.</p>
       <p>Capitalize on low hanging fruit to identify a ballpark value added activity to beta test. Override the digital divide with additional clickthroughs from DevOps. Nanotechnology immersion along the information highway will close the loop on focusing solely on the bottom line.</p>
@@ -209,107 +193,142 @@
       <p>Enthusiastically mesh long-term high-impact infrastructures vis-a-vis efficient customer service. Professionally fashion wireless leadership rather than prospective experiences. Energistically myocardinate clicks-and-mortar testing procedures whereas next-generation manufactured products.</p>
       <p>Dynamically reinvent market-driven opportunities and ubiquitous interfaces. Energistically fabricate an expanded array of niche markets through robust products. Appropriately implement visionary e-services vis-a-vis strategic web-readiness.</p>
     </div>
-    <div id="dialog">
-      <div id="dialog-background"></div>
-      <div id="dialog-content">
-        <button class="icon right">&#x2718;</button>
-        <h2>Title</h2>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
-        <p>Some text in the Modal..</p>
+    <div class="dialog">
+      <div class="dialog-background"></div>
+      <div class="dialog-content">
+        <button class="dialog-close icon right">&#x2718;</button>
+        <h2>Dialog</h2>
+        <p>Dialog text 1</p>
+        <p>Dialog text 2</p>
+        <p>Dialog text 3</p>
+        <p>Dialog text 4</p>
+        <p>Dialog text 5</p>
+        <p>Dialog text 6</p>
+        <p>Dialog text 7</p>
+        <p>Dialog text 8</p>
+        <p>Dialog text 9</p>
+        <p>Dialog text 10</p>
+        <p>Dialog text 11</p>
+        <p>Dialog text 12</p>
+        <p>Dialog text 13</p>
+        <p>Dialog text 14</p>
+        <p>Dialog text 15</p>
+        <p>Dialog text 16</p>
+        <p>Dialog text 17</p>
+        <p>Dialog text 18</p>
+        <p>Dialog text 19</p>
+        <p>Dialog text 20</p>
       </div>
     </div>
-    <footer id="footer">
+    <footer>
       <p>&copy; 2017 <a href="https://github.com/ethanneff/branch-journey-sticky/blob/gh-pages/index.html">view the code</a></p>
     </footer>
   </div>
   <script>
-      // Branch
-      (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent".split(" "), 0);
-      branch.init('key_live_cdBFLZfAZNKm2LxPq6qbpahiuwes54yF');
-      document.getElementById('show-journey').addEventListener('click', showJourney);
-      document.getElementById('hide-journey').addEventListener('click', hideJourney);
-      function showJourney() {
-        branch.track('pageview');
+    // BRANCH
+    (function(b,r,a,n,c,h,_,s,d,k){if(!b[n]||!b[n]._q){for(;s<_.length;)c(h,_[s++]);d=r.createElement(a);d.async=1;d.src="https://cdn.branch.io/branch-latest.min.js";k=r.getElementsByTagName(a)[0];k.parentNode.insertBefore(d,k);b[n]=h}})(window,document,"script","branch",function(b,r){b[r]=function(){b._q.push([r,arguments])}},{_q:[],_v:1},"addListener applyCode autoAppIndex banner closeBanner closeJourney creditHistory credits data deepview deepviewCta first getCode init link logout redeem referrals removeListener sendSMS setBranchViewData setIdentity track validateCode trackCommerceEvent".split(" "), 0);
+    branch.init('key_live_icCccJIpd7GlYY5oOmoEtpafuDiuyXhT');
+    document.getElementById('show-journey').addEventListener('click', function() {
+      branch.track('pageview');
+    });
+    document.getElementById('hide-journey').addEventListener('click', function() {
+      branch.closeJourney();
+    });
+    // DRAWER
+    var drawers = document.getElementsByClassName('drawer');
+    var drawerButton = document.getElementById('show-drawer');
+    drawerButton.addEventListener('click', function() {
+      toggleDrawer(drawers[0]);
+    });
+    for (var i = 0; i < drawers.length; i++) {
+      var drawer = drawers[i];
+      var children = drawer.children;
+      var background = null;
+      var content = null;
+      for (var i = 0; i < children.length; i++) {
+        var child = children[i]
+        content = (child.classList.contains('drawer-content')) ? child : content;
+        background = (child.classList.contains('drawer-background')) ? child : background;
       }
-      function hideJourney() {
-        branch.closeJourney();
-      }
-    </script>
-    <script>
-      // drawer
-      var isDrawerOpen = false;
-      var drawer = document.getElementById('drawer');
-      var drawerContent = document.getElementById('drawer-content');
-      document.getElementById('toggle-drawer').addEventListener('click', toggleDrawer);
-      document.getElementById('drawer-background').addEventListener('click', toggleDrawer);
-
-      function toggleDrawer() {
-        isDrawerOpen ? drawer.classList.remove('active') : drawer.className += ' active';
-        isDrawerOpen = !isDrawerOpen;
-      }
-
-      var xStart = null;
-      var yStart = null;
-      drawer.addEventListener('touchstart', handleTouchStart, false);
-      drawer.addEventListener('touchmove', handleTouchMove, false);
-      drawer.addEventListener('touchend', handleTouchEnd, false);
-      function handleTouchStart(evt) {
-        xStart = evt.touches[0].clientX;
-        yStart = evt.touches[0].clientY;
-      }
-      function handleTouchMove(evt) {
-        if (!xStart || !yStart) {
-          return;
+      background.addEventListener('click', function(event) {
+        toggleDrawer(drawer);
+      });
+      drawer.addEventListener('touchstart', function(event) {
+        handleTouchStart(event)
+      }, false);
+      drawer.addEventListener('touchmove', function(event) {
+        handleTouchMove(event, content)
+      }, false);
+      drawer.addEventListener('touchend', function(event) {
+        handleTouchEnd(event, content, drawer)
+      }, false);
+    }
+    function toggleDrawer(drawer) {
+      var isDrawerOpen = drawer.classList.contains('active');
+      isDrawerOpen ? drawer.classList.remove('active') : drawer.className += ' active';
+    }
+    var drawerSwipeBuffer = 100;
+    var xStart = null;
+    var yStart = null;
+    function handleTouchStart(event) {
+      xStart = event.touches[0].clientX;
+      yStart = event.touches[0].clientY;
+    }
+    function handleTouchMove(event, content) {
+      if (!xStart || !yStart) return;
+      var xDiff = xStart - event.touches[0].clientX;
+      var yDiff = yStart - event.touches[0].clientY;
+      if (Math.abs(xDiff) > Math.abs(yDiff)) { // left or right
+        var prev = parseInt(content.style.marginLeft, 10) || 0;
+        var next = prev + -xDiff;
+        if (next > 0) {
+          content.style.marginLeft = "0px";
+        } else {
+          content.style.marginLeft = -xDiff + "px";
         }
-        var xMove = evt.touches[0].clientX;
-        var yMove = evt.touches[0].clientY;
-        var xDiff = xStart - xMove;
-        var yDiff = yStart - yMove;
-        if (Math.abs(xDiff) > Math.abs(yDiff)) {
-          var prev = parseInt(drawerContent.style.marginLeft, 10) || 0;
-          var next = prev + -xDiff;
-          if (next > 0) {
-            drawerContent.style.marginLeft = "0px";
-          } else {
-            drawerContent.style.marginLeft = -xDiff + "px";
-          }
+      }
+    }
+    function handleTouchEnd(event, content, drawer) {
+      var prev = parseInt(content.style.marginLeft, 10) || 0;
+      var close = (prev < -drawerSwipeBuffer) ? true : false;
+      content.style.marginLeft = "0px";
+      close ? toggleDrawer(drawer) : null;
+      xStart = null;
+      yStart = null;
+    }
+    // DIALOG
+    var dialogs = document.getElementsByClassName('dialog');
+    var dialogButton = document.getElementById('show-dialog');
+    dialogButton.addEventListener('click', function() {
+      toggleDialog(dialogs[0]);
+    });
+    for (var i = 0; i < dialogs.length; i++) {
+      var dialog = dialogs[i];
+      var children = dialog.children;
+      var background = null;
+      var close = null;
+      for (var i = 0; i < children.length; i++) {
+        var child = children[i]
+        var subchildren = child.children;
+        background = (child.classList.contains('dialog-background')) ? child : background;
+        for (var i = 0; i < subchildren.length; i++) {
+          var subchild = subchildren[i]
+          close = (subchild.classList.contains('dialog-close')) ? subchild : close;
         }
       }
-
-      function handleTouchEnd(evt) {
-        var prev = parseInt(drawerContent.style.marginLeft, 10) || 0;
-        var close = (prev < -100) ? true : false;
-        drawerContent.style.marginLeft = "0px";
-        close ? toggleDrawer() : null;
-      }
-    </script>
-    <script>
-      // dialog
-      var isDialogOpen = false;
-      var dialog = document.getElementById('dialog');
-      document.getElementById('show-dialog').addEventListener('click', toggleDialog);
-      // document.getElementById('close-dialog').addEventListener('click', toggleDialog);
-      document.getElementById('dialog-background').addEventListener('click', toggleDialog);
-      function toggleDialog(event) {
-        console.log('toggleDialog')
-        isDialogOpen ? document.body.classList.remove('dialog') : document.body.className += ' dialog';
-        isDialogOpen ? dialog.classList.remove('active') : dialog.className += ' active';
-        isDialogOpen = !isDialogOpen;
-      }
-    </script>
-  </body>
-  </html>
+      background.addEventListener('click', function(event) {
+        toggleDialog(dialog);
+      });
+      close.addEventListener('click', function(event) {
+        toggleDialog(dialog);
+      });
+    }
+    function toggleDialog(dialog) {
+      console.log(dialog)
+      var isDialogOpen = dialog.classList.contains('active');
+      isDialogOpen ? document.body.classList.remove('dialog') : document.body.className += ' dialog';
+      isDialogOpen ? dialog.classList.remove('active') : dialog.className += ' active';
+    }
+  </script>
+</body>
+</html>
